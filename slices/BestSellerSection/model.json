@@ -1,0 +1,16 @@
+{
+  "id": "best_seller_section",
+  "type": "SharedSlice",
+  "name": "BestSellerSection",
+  "description": "BestSellerSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

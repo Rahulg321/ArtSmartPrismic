@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"hero_heading": {
+				"__TYPE__": "FieldContent",
+				"value": "breeze",
+				"type": "Text"
+			},
+			"hero_tagline": {
+				"__TYPE__": "FieldContent",
+				"value": "noted",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
