@@ -3,6 +3,10 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Button from "@/app/components/Button";
 import { IoCube } from "react-icons/io5";
+import { IoIosChatboxes } from "react-icons/io";
+import { FaCanadianMapleLeaf } from "react-icons/fa";
+import { MdPayment } from "react-icons/md";
+import BackgroundImageCard from "@/app/components/background-image-card";
 
 /**
  * Props for `DiscountSection`.
@@ -20,44 +24,61 @@ const DiscountSection = ({ slice }: DiscountSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="big-container block-space "
     >
-      <div className="flex flex-col md:flex-row gap-4">
-        <DiscountCard
-          classname="flex-1"
-          backgroundImageUrl="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        >
-          <span>New Collection</span>
-          <h3>Intensive Glow C+ Serum </h3>
-          <Button>Explore Now</Button>
-        </DiscountCard>
-        <DiscountCard
-          classname="flex-1"
-          backgroundImageUrl="https://images.unsplash.com/photo-1638382875668-3a1751bb6f20?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        >
-          <h3>25% on Everything</h3>
-          <span>Lorem ipsum dolor sit ametlorem2 Lorem, ipsum</span>
-          <Button>Shop Now</Button>
-        </DiscountCard>
+      <div className="text-center mb-8">
+        <h2 className="text-5xl">Available Discounts</h2>
       </div>
-      <div className="flex flex-col md:flex-row mt-12 gap-4">
+      <div className="grid grid-cols-2 gap-6">
+        {slice.items.map((item, index) => (
+          <BackgroundImageCard
+            backgroundImage={item.card_background_image}
+            classname=""
+            key={index}
+          >
+            <span className="text-white font-bold text-3xl">
+              {item.card_heading}
+            </span>
+            <span className="text-white font-semibold italic">
+              {item.card_tagline}
+            </span>
+          </BackgroundImageCard>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
         <div>
-          <IoCube />
-          <h5>Free Shipping</h5>
-          <span>Free Shipping on order above 500</span>
+          <div className="text-6xl">
+            <IoCube />
+          </div>
+          <h4>Free Shipping</h4>
+          <span className="text-sm font-semibold">
+            Free Shipping on order above 500
+          </span>
         </div>
         <div>
-          <IoCube />
-          <h5>Returns</h5>
-          <span>Free Shipping on order above 500</span>
+          <div className="text-6xl">
+            <FaCanadianMapleLeaf />
+          </div>
+          <h4>Returns</h4>
+          <span className="text-sm font-semibold">
+            Within 30 days for an exchange
+          </span>
         </div>
         <div>
-          <IoCube />
-          <h5>Online Support</h5>
-          <span>Free Shipping on order above 500</span>
+          <div className="text-6xl">
+            <IoIosChatboxes />
+          </div>
+          <h4>Online Support</h4>
+          <span className="text-sm font-semibold">
+            24 hours a day 7 days a week
+          </span>
         </div>
         <div>
-          <IoCube />
-          <h5>Flexible Payment</h5>
-          <span>Free Shipping on order above 500</span>
+          <div className="text-6xl">
+            <MdPayment />
+          </div>
+          <h4>Flexible Payment</h4>
+          <span className="text-sm font-semibold">
+            Pay with multiple credit cards
+          </span>
         </div>
       </div>
     </section>

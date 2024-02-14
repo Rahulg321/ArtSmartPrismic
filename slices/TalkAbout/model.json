@@ -1,0 +1,34 @@
+{
+  "id": "talk_about",
+  "type": "SharedSlice",
+  "name": "TalkAbout",
+  "description": "TalkAbout",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "hobby_name": {
+          "type": "Text",
+          "config": {
+            "label": "Hobby Name",
+            "placeholder": ""
+          }
+        },
+        "hobby_image": {
+          "type": "Image",
+          "config": {
+            "label": "Hobby Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
+    }
+  ]
+}

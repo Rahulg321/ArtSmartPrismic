@@ -4,94 +4,8 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-/**
- * Content for Featured Products documents
- */
-interface FeaturedProductsDocumentData {
-  /**
-   * Product Main Image field in *Featured Products*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.featured_product_main_image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  featured_product_main_image: prismic.ImageField<never>;
-
-  /**
-   * Product Name field in *Featured Products*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.product_name
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  product_name: prismic.KeyTextField;
-
-  /**
-   * Product Price field in *Featured Products*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.product_price
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  product_price: prismic.NumberField;
-
-  /**
-   * Product Description field in *Featured Products*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.product_description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  product_description: prismic.RichTextField;
-
-  /**
-   * Product Image 1 field in *Featured Products*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.product_image_1
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  product_image_1: prismic.ImageField<never>;
-
-  /**
-   * Product Image 2 field in *Featured Products*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.product_image_2
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  product_image_2: prismic.ImageField<never>;
-}
-
-/**
- * Featured Products document from Prismic
- *
- * - **API ID**: `featured_products`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type FeaturedProductsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<FeaturedProductsDocumentData>,
-    "featured_products",
-    Lang
-  >;
-
 type HomepageDocumentDataSlicesSlice =
+  | FeaturedProductsSlice
   | BestSellerSectionSlice
   | DiscountSectionSlice
   | ShopByCategorySliceSlice
@@ -162,6 +76,12 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContactFormSectionSlice
+  | ProductListSlice
+  | TalkAboutSlice
+  | BestSellerSectionSlice
+  | FeaturedProductsSlice
+  | MyValuesSlice
   | DiscountSectionSlice
   | ImageRightSlice
   | ImageLeftSlice
@@ -228,7 +148,55 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-interface ProductsDocumentData {}
+/**
+ * Content for Products documents
+ */
+interface ProductsDocumentData {
+  /**
+   * Product Name field in *Products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.product_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_name: prismic.KeyTextField;
+
+  /**
+   * Product Image field in *Products*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.product_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Product Price field in *Products*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.product_price
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  product_price: prismic.NumberField;
+
+  /**
+   * Is Featured field in *Products*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: products.is_featured
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_featured: prismic.BooleanField;
+}
 
 /**
  * Products document from Prismic
@@ -346,7 +314,6 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
-  | FeaturedProductsDocument
   | HomepageDocument
   | PageDocument
   | ProductsDocument
@@ -448,6 +415,106 @@ export type BiographySlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ContactFormSection → Primary*
+ */
+export interface ContactFormSectionSliceDefaultPrimary {
+  /**
+   * Heading field in *ContactFormSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form_section.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *ContactFormSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form_section.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Contact Image field in *ContactFormSection → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form_section.primary.contact_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  contact_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ContactFormSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactFormSection*
+ */
+type ContactFormSectionSliceVariation = ContactFormSectionSliceDefault;
+
+/**
+ * ContactFormSection Shared Slice
+ *
+ * - **API ID**: `contact_form_section`
+ * - **Description**: ContactFormSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSectionSlice = prismic.SharedSlice<
+  "contact_form_section",
+  ContactFormSectionSliceVariation
+>;
+
+/**
+ * Primary content in *DiscountSection → Items*
+ */
+export interface DiscountSectionSliceDefaultItem {
+  /**
+   * Card Background Image field in *DiscountSection → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: discount_section.items[].card_background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  card_background_image: prismic.ImageField<never>;
+
+  /**
+   * Card Heading field in *DiscountSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: discount_section.items[].card_heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_heading: prismic.KeyTextField;
+
+  /**
+   * Card Tagline field in *DiscountSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: discount_section.items[].card_tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_tagline: prismic.KeyTextField;
+}
+
+/**
  * Default variation for DiscountSection Slice
  *
  * - **API ID**: `default`
@@ -457,7 +524,7 @@ export type BiographySlice = prismic.SharedSlice<
 export type DiscountSectionSliceDefault = prismic.SharedSliceVariation<
   "default",
   Record<string, never>,
-  never
+  Simplify<DiscountSectionSliceDefaultItem>
 >;
 
 /**
@@ -475,6 +542,36 @@ type DiscountSectionSliceVariation = DiscountSectionSliceDefault;
 export type DiscountSectionSlice = prismic.SharedSlice<
   "discount_section",
   DiscountSectionSliceVariation
+>;
+
+/**
+ * Default variation for FeaturedProducts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedProducts*
+ */
+type FeaturedProductsSliceVariation = FeaturedProductsSliceDefault;
+
+/**
+ * FeaturedProducts Shared Slice
+ *
+ * - **API ID**: `featured_products`
+ * - **Description**: FeaturedProducts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSlice = prismic.SharedSlice<
+  "featured_products",
+  FeaturedProductsSliceVariation
 >;
 
 /**
@@ -640,6 +737,91 @@ export type ImageRightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *MyValues → Items*
+ */
+export interface MyValuesSliceDefaultItem {
+  /**
+   * Value Heading field in *MyValues → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: my_values.items[].value_heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  value_heading: prismic.KeyTextField;
+
+  /**
+   * Value Text field in *MyValues → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: my_values.items[].value_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  value_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for MyValues Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MyValuesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<MyValuesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *MyValues*
+ */
+type MyValuesSliceVariation = MyValuesSliceDefault;
+
+/**
+ * MyValues Shared Slice
+ *
+ * - **API ID**: `my_values`
+ * - **Description**: MyValues
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MyValuesSlice = prismic.SharedSlice<
+  "my_values",
+  MyValuesSliceVariation
+>;
+
+/**
+ * Default variation for ProductList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductList*
+ */
+type ProductListSliceVariation = ProductListSliceDefault;
+
+/**
+ * ProductList Shared Slice
+ *
+ * - **API ID**: `product_list`
+ * - **Description**: ProductList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductListSlice = prismic.SharedSlice<
+  "product_list",
+  ProductListSliceVariation
+>;
+
+/**
  * Primary content in *ShopByCategorySlice → Primary*
  */
 export interface ShopByCategorySliceSliceDefaultPrimary {
@@ -719,6 +901,61 @@ export type ShopByCategorySliceSlice = prismic.SharedSlice<
   ShopByCategorySliceSliceVariation
 >;
 
+/**
+ * Primary content in *TalkAbout → Items*
+ */
+export interface TalkAboutSliceDefaultItem {
+  /**
+   * Hobby Name field in *TalkAbout → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talk_about.items[].hobby_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  hobby_name: prismic.KeyTextField;
+
+  /**
+   * Hobby Image field in *TalkAbout → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talk_about.items[].hobby_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hobby_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TalkAbout Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TalkAboutSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<TalkAboutSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *TalkAbout*
+ */
+type TalkAboutSliceVariation = TalkAboutSliceDefault;
+
+/**
+ * TalkAbout Shared Slice
+ *
+ * - **API ID**: `talk_about`
+ * - **Description**: TalkAbout
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TalkAboutSlice = prismic.SharedSlice<
+  "talk_about",
+  TalkAboutSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -729,8 +966,6 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      FeaturedProductsDocument,
-      FeaturedProductsDocumentData,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -751,9 +986,17 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      ContactFormSectionSlice,
+      ContactFormSectionSliceDefaultPrimary,
+      ContactFormSectionSliceVariation,
+      ContactFormSectionSliceDefault,
       DiscountSectionSlice,
+      DiscountSectionSliceDefaultItem,
       DiscountSectionSliceVariation,
       DiscountSectionSliceDefault,
+      FeaturedProductsSlice,
+      FeaturedProductsSliceVariation,
+      FeaturedProductsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -766,11 +1009,22 @@ declare module "@prismicio/client" {
       ImageRightSliceDefaultPrimary,
       ImageRightSliceVariation,
       ImageRightSliceDefault,
+      MyValuesSlice,
+      MyValuesSliceDefaultItem,
+      MyValuesSliceVariation,
+      MyValuesSliceDefault,
+      ProductListSlice,
+      ProductListSliceVariation,
+      ProductListSliceDefault,
       ShopByCategorySliceSlice,
       ShopByCategorySliceSliceDefaultPrimary,
       ShopByCategorySliceSliceDefaultItem,
       ShopByCategorySliceSliceVariation,
       ShopByCategorySliceSliceDefault,
+      TalkAboutSlice,
+      TalkAboutSliceDefaultItem,
+      TalkAboutSliceVariation,
+      TalkAboutSliceDefault,
     };
   }
 }

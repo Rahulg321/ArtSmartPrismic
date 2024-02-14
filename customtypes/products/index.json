@@ -11,6 +11,37 @@
           "label": "UID"
         },
         "type": "UID"
+      },
+      "product_name": {
+        "type": "Text",
+        "config": {
+          "label": "Product Name",
+          "placeholder": ""
+        }
+      },
+      "product_image": {
+        "type": "Image",
+        "config": {
+          "label": "Product Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "product_price": {
+        "type": "Number",
+        "config": {
+          "label": "Product Price",
+          "placeholder": ""
+        }
+      },
+      "is_featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Featured",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
       }
     }
   }

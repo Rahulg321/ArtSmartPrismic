@@ -17,6 +17,24 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "contact_form_section": {
+              "type": "SharedSlice"
+            },
+            "product_list": {
+              "type": "SharedSlice"
+            },
+            "talk_about": {
+              "type": "SharedSlice"
+            },
+            "best_seller_section": {
+              "type": "SharedSlice"
+            },
+            "featured_products": {
+              "type": "SharedSlice"
+            },
+            "my_values": {
+              "type": "SharedSlice"
+            },
             "discount_section": {
               "type": "SharedSlice"
             },

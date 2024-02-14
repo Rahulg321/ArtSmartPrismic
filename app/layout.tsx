@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${barlowCondensed.variable}`}
+      className={`${montserrat.variable} ${barlowCondensed.variable} bg-[#FFFAFA]`}
     >
       <body>
         <main className="parent-container">

@@ -1,8 +1,8 @@
 {
-  "id": "discount_section",
+  "id": "my_values",
   "type": "SharedSlice",
-  "name": "DiscountSection",
-  "description": "DiscountSection",
+  "name": "MyValues",
+  "description": "MyValues",
   "variations": [
     {
       "id": "default",
@@ -13,25 +13,17 @@
       "imageUrl": "",
       "primary": {},
       "items": {
-        "card_background_image": {
-          "type": "Image",
-          "config": {
-            "label": "Card Background Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "card_heading": {
+        "value_heading": {
           "type": "Text",
           "config": {
-            "label": "Card Heading",
+            "label": "Value Heading",
             "placeholder": ""
           }
         },
-        "card_tagline": {
+        "value_text": {
           "type": "Text",
           "config": {
-            "label": "Card Tagline",
+            "label": "Value Text",
             "placeholder": ""
           }
         }
