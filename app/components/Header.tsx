@@ -99,7 +99,7 @@ export default Header;
 function NameLogo({}: {}) {
   return (
     <Link
-      href="/home"
+      href="/"
       aria-label="Home page"
       className="text-2xl font-extrabold md:text-3xl"
     >
