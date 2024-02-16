@@ -16,7 +16,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <BackgroundImageSection
       classname="block-space flex"
       minheight="90vh"
-      backgroundImageUrl="https://images.unsplash.com/flagged/photo-1569438703127-0a2c75587531?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      backgroundImageUrl="https://images.unsplash.com/photo-1515096788709-a3cf4ce0a4a6?q=80&w=1958&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     >
       <div className="flex flex-col justify-center px-12 gap-4">
         <span className="text-2xl font-bold">Essential Items</span>
